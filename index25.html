@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Manager Pro - Dashboard</title>
+    <link rel="stylesheet" href="style25.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                <span>PM Pro</span>
+            </div>
+            <nav>
+                <a href="#" class="nav-item active" data-section="overview"><i class="fas fa-chart-line"></i> Overview</a>
+                <a href="#" class="nav-item" data-section="projects"><i class="fas fa-tasks"></i> Projects</a>
+                <a href="#" class="nav-item" data-section="kanban"><i class="fas fa-board-kanban"></i> Kanban</a>
+                <a href="#" class="nav-item" data-section="team"><i class="fas fa-users"></i> Team</a>
+                <a href="#" class="nav-item" data-section="analytics"><i class="fas fa-chart-bar"></i> Analytics</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+                    <h1 id="pageTitle">Overview</h1>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search projects...">
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=4f46e5&color=fff&size=40" alt="User">
+                        <span>Admin</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Stats Cards -->
+            <section id="overview" class="section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-tasks"></i></div>
+                        <div class="stat-info">
+                            <h3>12</h3>
+                            <p>Total Projects</p>
+                        </div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="stat-info">
+                            <h3>8</h3>
+                            <p>Completed</p>
+                        </div>
+                    </div>
+                    <div class="stat-card warning">
+                        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                        <div class="stat-info">
+                            <h3>3</h3>
+                            <p>In Progress</p>
+                        </div>
+                    </div>
+                    <div class="stat-card danger">
+                        <div class="stat-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="stat-info">
+                            <h3>1</h3>
+                            <p>Overdue</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Table -->
+            <section id="projects" class="section">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Project</th>
+                                <th>Manager</th>
+                                <th>Status</th>
+                                <th>Progress</th>
+                                <th>Deadline</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTable">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Kanban Board -->
+            <section id="kanban" class="section">
+                <div class="kanban-board">
+                    <div class="kanban-column" data-status="todo">
+                        <h3>To Do <span class="count">3</span></h3>
+                        <div class="kanban-tasks" id="todo-tasks"></div>
+                    </div>
+                    <div class="kanban-column" data-status="in-progress">
+                        <h3>In Progress <span class="count">2</span></h3>
+                        <div class="kanban-tasks" id="progress-tasks"></div>
+                    </div>
+                    <div class="kanban-column" data-status="done">
+                        <h3>Done <span class="count">5</span></h3>
+                        <div class="kanban-tasks" id="done-tasks"></div>
+                    </div>
+                </div>
+                <button class="add-task-btn" onclick="addTaskModal()"><i class="fas fa-plus"></i> Add Task</button>
+            </section>
+
+            <!-- Team Section -->
+            <section id="team" class="section">
+                <div class="team-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics" class="section">
+                <div class="charts-container">
+                    <canvas id="projectChart" width="400" height="200"></canvas>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div class="modal" id="taskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Task</h3>
+                <span class="close" onclick="closeTaskModal()">&times;</span>
+            </div>
+            <form id="taskForm">
+                <input type="text" id="taskTitle" placeholder="Task Title" required>
+                <textarea id="taskDesc" placeholder="Description"></textarea>
+                <select id="taskStatus">
+                    <option value="todo">To Do</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="done">Done</option>
+                </select>
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script25.js"></script>
+</body>
+</html>
